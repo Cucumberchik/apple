@@ -1,0 +1,9 @@
+$global-color: rgba(255, 255, 255, .8);
+$global-color-secondary: #E8E8ED;
+$global-color-hover: #FFFFFF;
+@mixin basicTheme(){
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

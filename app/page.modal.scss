@@ -1,0 +1,43 @@
+@use "./styles/modals.scss" as modul;
+#navbar{
+    z-index: 30;
+    @include modul.basicTheme;
+    border-bottom: 1px solid modul.$global-color-hover;
+    img{
+        user-select: none;
+        cursor: pointer;
+    }
+    .container{
+        width: 70%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    a{
+        text-decoration: none;
+        color: modul.$global-color;
+        transition: 0.2s;
+        font-size: 13px;
+        z-index: 1;
+    }
+    a:hover{
+        color: modul.$global-color-hover;
+    }
+}
+.navbar{
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    .line{
+        width: 70%;
+        height: 30px;
+        position: absolute;
+    }
+    background: rgba(22, 22, 23, .8);
+
+}
+.navbar.active{
+    backdrop-filter: blur(0px);
+    background: none;
+    
+}
