@@ -1,0 +1,28 @@
+.navbar-module {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    margin-top: 40px;
+    h2{
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: -.01em;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(146, 146, 151);
+    }
+    a{
+        padding: 4px 0;
+        font-size: 18px;
+    } 
+    div {
+        width: 30%;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        overflow: hidden;
+        height: 1px; 
+    }
+}
+
+
+

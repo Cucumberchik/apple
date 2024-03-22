@@ -235,7 +235,7 @@ export interface TypeNavigation {
             {title: "Order Status", to: "/auth"},
             {title: "Apple Trade In", to: "/shop/trade-in"},
             {title: "Financing", to: "/shop/financing"}
-        ]}
+        ]},
     ]},
     {to: "/support", title: "Support", src:[
         {title: 'Explore Support', src: [
