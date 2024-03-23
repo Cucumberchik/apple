@@ -1,32 +1,37 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { addDoc, DocumentData, getDocs } from "@firebase/firestore";
+import { addDoc, getDocs } from "@firebase/firestore";
 import { db } from "@/app/firebase";
+import { collection } from "firebase/firestore";
+import { TypeProduct } from "@/app/(components)/(pages)/support/page";
+import type {DocumentData } from "@firebase/firestore";
+import type { CollectionReference } from "firebase/firestore";
 
+let productConfigureRef = collection(db, "Product");
 
 
 const initialState = {
-    productConfigureRef: collection(db),
-    data: null,
+    productConfigureRef,
+    data: [],
     error: false
 };
 
-// Создаем слайс с помощью createSlice
 const AppleSlice = createSlice({
     name: "AppleSlice",
     initialState,
     reducers: {
-        addProduct: {
-            reducer(state, action: PayloadAction<DocumentData>) {
+        upDateData:(state, action)=>{
+            state.data = action.payload;
+        },
+        addProduct:(state, action: PayloadAction<TypeProduct>)=> {
+            try{
                 addDoc(state.productConfigureRef, action.payload);
-                state.data = getDocs(state.productConfigureRef);
-            },
-            prepare(payload: DocumentData) {
-                return { payload };
+            }catch(e){
+                console.log(e);
+
             }
-        }
+        },
     }
 });
 
-// Экспортируем actions и reducer
-export const { addProduct } = AppleSlice.actions;
+export const { upDateData, addProduct } = AppleSlice.actions;
 export default AppleSlice.reducer;

@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./(components)/navbar/header";
 import "./page.modal.scss"
 import "./styles/modals.scss"
+import UpDateData from "./hooks/hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}> 
       <ProviderRedux>
+      <UpDateData/>
+
         <Header/>
           <section id="global">
            {children}
