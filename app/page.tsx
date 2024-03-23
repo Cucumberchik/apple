@@ -1,12 +1,6 @@
-import Header from "./components/navbar/header";
-import "./page.modal.scss"
-import "./styles/modals.scss"
 
-
-export default function Home() {
+export default function page() {
   return (
-    <main>
-      <Header/>
-    </main>
-  );
+    <main>page</main>
+  )
 }

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import ProviderRedux from "./providerRedux"
 import "./globals.css";
+import Header from "./(components)/navbar/header";
+import "./page.modal.scss"
+import "./styles/modals.scss"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}> 
+      <ProviderRedux>
+        <Header/>
+          <section id="global">
+           {children}
+          </section>
+      </ProviderRedux>
+      </body>
     </html>
   );
 }
