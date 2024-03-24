@@ -3,13 +3,18 @@ import { addDoc, getDocs } from "@firebase/firestore";
 import { db } from "@/app/firebase";
 import { collection } from "firebase/firestore";
 import { TypeProduct } from "@/app/(components)/(pages)/support/page";
-import type {DocumentData } from "@firebase/firestore";
-import type { CollectionReference } from "firebase/firestore";
+import type { CollectionReference, DocumentData } from "firebase/firestore";
+
 
 let productConfigureRef = collection(db, "Product");
+interface IinitialState {
+    productConfigureRef?: any,
+    data?:TypeProduct[],
+    error: boolean
+    
+}
 
-
-const initialState = {
+const initialState: IinitialState = {
     productConfigureRef,
     data: [],
     error: false
@@ -24,10 +29,9 @@ const AppleSlice = createSlice({
         },
         addProduct:(state, action: PayloadAction<TypeProduct>)=> {
             try{
-                addDoc(state.productConfigureRef, action.payload);
+                addDoc(productConfigureRef, action.payload);
             }catch(e){
                 console.log(e);
-
             }
         },
     }

@@ -1,14 +1,15 @@
 "use client"
 import { addProduct } from '@/app/GlobalRedux/Slices/generalAppleSlice';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/ReduxHook';
-import { getDocs } from 'firebase/firestore';
+// import { getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 export interface TypeProduct  {
     title?: string,
     price?:  string ,
     URLimage?: string,
     description?: string,
-    cotegory?: string
+    cotegory?: string,
+    id?:string
 }
 
 export default function Admin() {
@@ -20,13 +21,12 @@ export default function Admin() {
     cotegory: ''
   });
   let {data, productConfigureRef} = useAppSelector(state=>state.generalAppleSlice)
+console.log(data);
 
-  
   let dispatch = useAppDispatch()
-  const [cotegory, setCotegory] = useState<string>('')
     function handleProduct(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         if(e.target.name === "price"){
-            const Product = {...inputVlue, [e.target.name]: e.target.value?.split('').filter(i=> +i).join('')}
+            const Product = {...inputVlue, [e.target.name]: e.target.value?.split('').filter(i=> +i || i === "0").join('')}
             setInputValue(Product)
         }else if(e.target.name !== "price"){
             const Product = {...inputVlue, [e.target.name]: e.target.value}
@@ -34,9 +34,11 @@ export default function Admin() {
         }else{
           alert("cotegory empty")
         }
+      
+
     }
     async function handleAdding(){
-      setInputValue({...inputVlue, cotegory: cotegory})
+      
       if(inputVlue.URLimage &&
          inputVlue.cotegory &&
          inputVlue.title&&
@@ -54,18 +56,14 @@ export default function Admin() {
       }else{
         alert("Please fill all fields")
       }
-    }
+    }  
     
   return (
     <section id='admin'>
         <div className="admin_content">
             <center><h1>Add Product</h1></center>
               <div className='inputs'>
-                <input value={inputVlue.title} onChange={handleProduct} type="text" name='title' placeholder='Title'/>
-                <input  value={inputVlue.description} onChange={handleProduct} type="text" name='description' placeholder='Description'/>
-                <input value={inputVlue.URLimage} onChange={handleProduct} type="text" name='URLimage' placeholder='URL image'/>
-                <input value={inputVlue.price} onChange={handleProduct} type="text" name='price' placeholder='Price'/>
-                <select onChange={(e)=>setCotegory(e.target.value)} name="cotegory" id="cotegory">
+              <select value={inputVlue.cotegory} onChange={(e)=>setInputValue({...inputVlue, cotegory: e.target.value})} name="cotegory" id="cotegory">
                     <option >Cotegory</option>
                     <option value="Mac">Mac</option>
                     <option value="iPad">iPad</option>
@@ -76,6 +74,11 @@ export default function Admin() {
                     <option value="AirPods">AirPods</option>
                     <option value="Accessories">Accessories</option>
                 </select>
+                <input value={inputVlue.title} onChange={handleProduct} type="text" name='title' placeholder='Title'/>
+                <input  value={inputVlue.description} onChange={handleProduct} type="text" name='description' placeholder='Description'/>
+                <input value={inputVlue.URLimage} onChange={handleProduct} type="text" name='URLimage' placeholder='URL image'/>
+                <input value={inputVlue.price} onChange={handleProduct} type="text" name='price' placeholder='Price'/>
+                
                 <button onClick={handleAdding} >Add Product</button>
               </div>
         </div>

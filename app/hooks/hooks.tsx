@@ -4,13 +4,16 @@ import { useAppSelector, useAppDispatch } from "./ReduxHook";
 import { useEffect } from "react";
 import { upDateData } from "../GlobalRedux/Slices/generalAppleSlice";
 
+
 export default function UpDateData() {
     let dispatch = useAppDispatch()
-    let {productConfigureRef} = useAppSelector(state=>state.generalAppleSlice)
+let {productConfigureRef} = useAppSelector(state=>state.generalAppleSlice)
     const fetchData = async () => {
-        const querySnapshot = await getDocs(productConfigureRef);
-        let fetchedData = querySnapshot.docs.map(doc => doc.data());
-        dispatch(upDateData(fetchedData))
+        const docs = await getDocs(productConfigureRef);
+        let Data = docs.docs.map((doc: any) => {
+            return { ...doc.data(), id: doc.id}
+        });
+        dispatch(upDateData(Data))
     };
     useEffect(()=>{fetchData()},[])
     return (<div></div>)
