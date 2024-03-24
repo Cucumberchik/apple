@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "@/public/favicon-32x32.png"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,6 +7,8 @@ import Navigation from "../source/globalnav"
 import NavbarModule from '../moduls/navbarModul'
 import { IconSearch, IconShoppingBag } from '@/icons/icon'
 import type { TypeNavigation, TypeSrc } from "../source/globalnav"
+import { useAppDispatch } from '@/app/hooks/ReduxHook'
+
 
 
 export interface TypeStatus  {
@@ -16,12 +18,12 @@ export interface TypeStatus  {
 
 export default function Header() {
   const [status, setStatus] = useState<TypeStatus>({status: "null",message: null,});
-  
+  let dispatch = useAppDispatch()
+  // useEffect(()=>{UpDateData(dispatch(upDateData()))},[])
   return (
     <section id='navbar' className={`navbar ${status.status}`}>
       <div className={`container ${status.status}`} onMouseLeave={() => setStatus({status: "false", message: status.message})}>
-        <nav>
-          
+        <nav> 
           <Link href="/"><Image src={logo} alt='logo' /></Link>
             {Navigation.map((el:TypeNavigation, id:number)=>(
               <Link 
@@ -44,7 +46,6 @@ export default function Header() {
         <br />
         <NavbarModule status={status} />
       </div>
-      {/* <div className="navbar_content"></div> */}
     </section>
   )
 }

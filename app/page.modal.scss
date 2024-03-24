@@ -14,7 +14,6 @@ a,button{
     position: fixed;
     z-index: 30;
     @include module.basicTheme;
-    border-bottom: 1px solid module.$global-color-hover;
     img{
         user-select: none;
         cursor: pointer;
@@ -24,6 +23,11 @@ a,button{
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 10;
+        transition: height 0.4s ease;
+    }
+    .container.null{
+        height: 40px;
     }
     nav{
         position: absolute;
@@ -40,7 +44,6 @@ a,button{
         flex: 1 1 auto;
         text-decoration: none;
         color: module.$global-color;
-        z-index: 1;
         text-align: center;
     }
     a:hover{
@@ -65,18 +68,14 @@ a,button{
     }
 }
 .navbar{
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
     transition: 0.3s;
     .line{
         width: 70%;
         height: 30px;
         position: absolute;
-    }.container {
-        height: 40px; 
-        transition: height 0.4s ease; /* Плавное изменение высоты */
     }
-    background: rgba(22, 22, 23, 0.721);
-
+    background: rgba(22, 22, 23, 0.561);
 }
 .navbar_content{
     position: absolute;
@@ -89,11 +88,12 @@ a,button{
 .navbar{
     .container.true{height: 400px;}
     .container.false{height: 40px;}
+    
 }
 .navbar.true{
     background: rgb(43, 43, 44);
-     backdrop-filter: blur(0px);}
-
+    backdrop-filter: blur(0px);
+}
 
 #admin{
     width: 100%;
@@ -157,3 +157,147 @@ a,button{
         }
     }
 }
+@mixin HomeLinkPresent(){
+    h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        line-height: 1.07143;
+        letter-spacing: -.005em;
+        font-weight: 500;
+        font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    }
+    h3{
+        font-weight: 400;
+        font-size: 30px;
+        opacity: 0.9;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #2997ff;
+        z-index: 1;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+}
+#home{
+    width: 100%;
+    .global_menu_apple_content{
+        width: 100%;
+        @include module.flex( flex ,start, flex-start, column); 
+        .vision_pro{
+            position: relative;
+            width: 100%;
+            background-color: #f4f4fd;
+            color:#1d1d1f ;
+            @include HomeLinkPresent;
+            @include module.flex( flex ,center, flex-start, row); 
+            .vision_content{
+                width: 100%;
+                height: 95vh;
+                @include module.flex( flex ,center, flex-start, row); 
+            }
+            img{
+                height: 100%;
+            }
+            .vision_title{
+                position: absolute;
+                bottom: 40px;
+            }
+            .vision_pro_links{
+                width: 100%;
+                @include module.flex( flex ,center, flex-start, row)
+            }
+        }  
+        .iphone_15_pro {
+            position: relative;
+            height: 100%;
+            flex-direction: column;
+            height: 94vh;            
+            background: rgb(0, 0, 0);
+            color: module.$global-color-secondary;
+            @include module.basicTheme;
+            @include HomeLinkPresent;
+            .module_content{
+                @include module.basicTheme;
+                flex-direction: column;
+                margin-top: 90px;
+            }
+            .iphone_15_pro_title{
+                position: absolute;
+                top: 80px;
+                @include module.flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .iphone_15_pro_links{
+                width: 200px;
+                display: flex;
+                justify-content: space-between;
+            }
+        }      
+        .iphone_15{
+            width: 100%;
+            color: #1d1d1f;
+            @include module.flex( flex , start, flex-start, row);
+            @include HomeLinkPresent;
+            .module_content{
+                width: 100%;
+                height: 90vh;
+                @include module.flex( flex , space-between, flex-start, column);
+            }
+            .iphone_15_title{
+                margin-top: 50px;
+                width: 100%;
+                @include module.flex( flex ,center, center, column)
+            }
+            .iphone_15_links{
+                width: 100%;
+                @include module.flex( flex ,center, flex-start, row)
+            }
+            .iphone_15_pro_link{
+                width: 100%;
+                img{
+                    width: 100%;
+                    height: 270px;
+                }
+            }
+        }   
+    }
+}
+#Store{
+    width: 100%;
+    @include module.flex( flex ,center, center, row);
+    .store_content{
+        margin-top: 30px;
+        width: 90%;
+    }
+    .card_product{
+        cursor: pointer;
+        width: 300px;
+        height: 370px;
+        background-color: #fff;
+        border-radius: 18px;
+        box-shadow: 2px 4px 12px #00000014;
+        @include module.flex( flex ,center, center, row);
+        transition: all .3s ;
+        .card_content{
+            width: 90%;
+            height: 90%;
+            @include module.flex( flex ,center, center, column);
+        }
+        img{
+            width: 85%;
+            height: 340px;
+        }
+    };
+    .card_product:hover{
+        transform: scale(1.04);
+    }
+}
+
+//@include module.flex( flex ,start, flex-start, row)

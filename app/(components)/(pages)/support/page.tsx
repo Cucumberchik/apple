@@ -2,7 +2,8 @@
 import { addProduct } from '@/app/GlobalRedux/Slices/generalAppleSlice';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/ReduxHook';
 // import { getDocs } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react'
+
+import React, { useState } from 'react'
 export interface TypeProduct  {
     title?: string,
     price?:  string ,
@@ -11,7 +12,6 @@ export interface TypeProduct  {
     cotegory?: string,
     id?:string
 }
-
 export default function Admin() {
   const [inputVlue, setInputValue] = useState<TypeProduct>({
     title: '',
@@ -20,8 +20,7 @@ export default function Admin() {
     description: '',
     cotegory: ''
   });
-  let {data, productConfigureRef} = useAppSelector(state=>state.generalAppleSlice)
-console.log(data);
+  let {data,} = useAppSelector(state=>state.generalAppleSlice)
 
   let dispatch = useAppDispatch()
     function handleProduct(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){

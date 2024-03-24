@@ -5,3 +5,7 @@
 body{
   background: white;
 }
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://path/to/SFProDisplay.woff2") format("woff2");
+}

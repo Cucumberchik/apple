@@ -1,9 +1,16 @@
 $global-color: rgba(255, 255, 255, .8);
-$global-color-secondary: #E8E8ED;
+$global-color-secondary: #f6f6f6;
 $global-color-hover: #FFFFFF;
+$global-color-link: #2997ff;
 @mixin basicTheme(){
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@mixin flex($flex: flex ,$center: start,$aling: flex-start, $column: row){
+    display: $flex;
+    justify-content: $center;
+    align-items: $aling;
+    flex-direction:  $column;
 }

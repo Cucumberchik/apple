@@ -3,19 +3,15 @@ import { addDoc, getDocs } from "@firebase/firestore";
 import { db } from "@/app/firebase";
 import { collection } from "firebase/firestore";
 import { TypeProduct } from "@/app/(components)/(pages)/support/page";
-import type { CollectionReference, DocumentData } from "firebase/firestore";
-
 
 let productConfigureRef = collection(db, "Product");
+
 interface IinitialState {
-    productConfigureRef?: any,
     data?:TypeProduct[],
     error: boolean
-    
 }
 
 const initialState: IinitialState = {
-    productConfigureRef,
     data: [],
     error: false
 };
