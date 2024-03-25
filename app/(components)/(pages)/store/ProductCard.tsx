@@ -1,14 +1,12 @@
-import React from 'react'
-import { TypeProduct } from '../support/page'
+import React from 'react';
+import { TypeProduct } from '../support/page';
 
-export default function ProductCard() {
-    let data: TypeProduct = {
-        URLimage: "https://www.istore.kg/media/products/ipad-pro-13-select-cell-spacegray-202210.webp",
-        cotegory: 'iPad',
-        description: "Amazing performance. Incredibly advanced displays. Ultra-fast wireless connection. Apple Pencil features a new level. Powerful new features in iPad OS. An unparalleled iPad experience.",
-        title: "iPad Pro 12.9",
-        price: '1700'
-    }
+interface ProductCardProps {
+  data: TypeProduct;
+  idx: number
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ data, idx }) => {
   return (
     <div className='card_product'>
         <div className="card_content">
@@ -23,5 +21,7 @@ export default function ProductCard() {
            </div>
         </div>
     </div>
-  )
-}
+  );
+};
+
+export default ProductCard;

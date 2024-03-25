@@ -68,14 +68,14 @@ a,button{
     }
 }
 .navbar{
-    backdrop-filter: blur(15px);
+    backdrop-filter: saturate(210%) blur(20px);
     transition: 0.3s;
     .line{
         width: 70%;
         height: 30px;
         position: absolute;
     }
-    background: rgba(22, 22, 23, 0.561);
+    background: rgba(22, 22, 23, 0.803);
 }
 .navbar_content{
     position: absolute;
@@ -91,7 +91,7 @@ a,button{
     
 }
 .navbar.true{
-    background: rgb(43, 43, 44);
+    background: #161617;
     backdrop-filter: blur(0px);
 }
 
@@ -269,35 +269,218 @@ a,button{
         }   
     }
 }
+@mixin AppleProductTextForHome(){
+    h1{
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        line-height: 1.125;
+        font-weight: 600;
+        letter-spacing: .002em;
+        font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    }
+    h3, h2{
+        font-size: 19px;
+        line-height: 1.21053;
+        font-weight: 400;
+        letter-spacing: .012em;
+        font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #2997ff;
+        z-index: 1;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+}
+#apple_products{
+    width: 100%;
+    @include module.flex( flex ,center, center, row);
+    .content{
+        width: 95%;
+        @include module.flex( flex ,space-between, flex-start, row);
+        flex-wrap: wrap;
+    }
+    .apple_product{
+        @include AppleProductTextForHome;
+        position: relative;
+        width: 50%;
+        @include module.flex( flex ,center, center, column);
+        img{
+            width: 99%;
+        }
+        .apple_title{
+            position: absolute;
+            @include module.flex( flex ,center, center, column);
+            top: 10px;
+            div{
+            @include module.flex( flex ,center, flex-start, row);
+            }
+        }
+        span{
+            font-size: 19px;
+            background-image: linear-gradient(90deg, #cb1333, #de45c1, #b96be2, #84a9e0, #23d43b, #d0bb08, #eb6d17);;
+            background-clip: text; 
+            color: transparent;
+        }
+    }
+}
+#apple_services{
+    @include AppleProductTextForHome;
+    @include module.flex( flex ,center, center, row);
+    width: 100%;
+    .content{
+        width: 95%;
+        @include module.flex( flex ,space-between,center, row);
+        flex-wrap: wrap;
+    }
+    .apple_services{
+        @include module.flex( flex ,center, flex-start, column);
+        position: relative;
+        width: 50%;
+    }
+    img{
+        width: 100%;
+    }
+    .apple_services_title{
+        h3{
+            width: 80%;
+            text-align: center
+        }
+        @include module.flex( flex ,center, center, column);
+        top: 30px;
+        position: absolute;
+    }
+    .apple_services_links{
+        display: flex;
+    }
+    
+}
 #Store{
     width: 100%;
     @include module.flex( flex ,center, center, row);
     .store_content{
         margin-top: 30px;
+        gap: 40px;
         width: 90%;
+        @include module.flex( flex ,start, flex-start, row);
+        flex-wrap: wrap;
     }
     .card_product{
         cursor: pointer;
-        width: 300px;
+        width: 320px;
         height: 370px;
         background-color: #fff;
         border-radius: 18px;
         box-shadow: 2px 4px 12px #00000014;
         @include module.flex( flex ,center, center, row);
         transition: all .3s ;
+        h3{
+            color: #b64400;
+            font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: -.01em;
+            line-height: 1.3333733333;
+            margin-bottom: 8px;
+            width: 204px;
+        }
+        h1{
+            color: #1d1d1f;
+            font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: .007em;
+            line-height: 1.1428571429;
+            margin: 0 0 9px;
+        }
+        h2{
+            color: #1d1d1f;
+            font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: -.016em;
+            line-height: 1.2857742857;
+            white-space: normal;
+        }
         .card_content{
             width: 90%;
             height: 90%;
             @include module.flex( flex ,center, center, column);
         }
         img{
-            width: 85%;
+            width: 80%;
             height: 340px;
         }
+        button{
+            color: white;
+            width: 50px;
+            height: 30px;
+            border: none;
+            border-radius: 50px;
+            background-color: #0071e3
+        }
     };
+    .card_title{
+        width: 80%;
+        height: auto;
+    }
+    .card_option{
+        width: 90%;
+        @include module.flex( flex ,space-between, flex-start, row);
+    }
     .card_product:hover{
         transform: scale(1.04);
     }
+    .loading_card{
+        transition: 0.4s;
+        cursor: pointer;
+        width: 320px;
+        height: 370px;
+        border-radius: 18px;
+        background: #9e9ea3;
+        box-shadow: 2px 4px 12px #00000014;
+        @include module.flex( flex ,center, center, row);
+        transition: all .3s ;
+        animation: loadingCard 2s infinite;
+        .h3{
+            width: 60px;
+            border-radius: 30px;
+            background-color: #cdcdce;
+            height: 20px;
+        }
+        .card_content{
+            width: 90%;
+            gap: 10px;
+            height: 90%;
+            @include module.flex( flex ,center, center, column);
+        }
+        .img{
+            width: 89%;
+            height: 330px;
+            border-radius: 10px;
+            background-color: #bababa;
+        }
+        .button{
+            color: white;
+            width: 50px;
+            height: 30px;
+            border: none;
+            border-radius: 50px;
+            background-color: #0071e3
+        }
+        .h2{
+            width: 200px;
+            height: 20px;
+            border-radius: 50px;
+            background-color: #cdcdce;
+        }
+    }
+
 }
 
-//@include module.flex( flex ,start, flex-start, row)
+//@include module.flex( flex ,start, flex-start, row);
