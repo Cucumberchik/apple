@@ -1,8 +1,10 @@
 
 import { IconApple, IconChevron_right } from "@/icons/icon";
 import Link from "next/link"
+import Sliders from "./(components)/moduls/sliders";
 
 export default function GlobalMenuApple() {
+  
   let iPhone15Pro: string = "https://i.imgur.com/pre716v.png";
   let iPhone15: string = "https://i.imgur.com/kG7Y78D.png";
   let visionPro: string = "https://www.apple.com/v/home/bl/images/heroes/apple-vision-pro/hero_apple_vision_pro_avail__ecthwv10twsy_medium.jpg";
@@ -134,6 +136,7 @@ export default function GlobalMenuApple() {
               </div>
             </div>
           </section>
+          <Sliders/>
         </div>
       </section>
     </main>

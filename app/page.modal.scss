@@ -360,6 +360,32 @@ a,button{
     }
     
 }
+#apple_tv_sliders{
+    width: 100%;
+    @include module.flex( flex ,center, center, column);
+    .content{
+        overflow: hidden;
+        width: 100%;
+        @include module.flex( flex ,start, center, row);
+        img{
+            width: 100%;
+        }
+        
+    }
+    .content_current{
+        width: 100%;
+        gap: 10px;
+        @include module.flex( flex ,center, center, row);
+        button{
+            border: none;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+        }
+    }
+    
+}
+//@include module.flex( flex ,start, flex-start, row);
 #Store{
     width: 100%;
     @include module.flex( flex ,center, center, row);
@@ -369,6 +395,9 @@ a,button{
         width: 90%;
         @include module.flex( flex ,start, flex-start, row);
         flex-wrap: wrap;
+    }
+    a{
+        text-decoration: none;
     }
     .card_product{
         cursor: pointer;

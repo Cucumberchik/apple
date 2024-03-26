@@ -1,0 +1,28 @@
+@use "../../../../styles//modals.scss" as R;
+#detail{
+    width: 100%;
+    @include R.flex(flex , center, center, row);
+    .content{
+        width: 90%;
+        @include R.flex(flex ,space-between, center, row);
+        img{
+            width: 50%;
+        }
+        h1{
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: 0;
+            font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+        h3{
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 400;
+            letter-spacing: -.016em;
+            font-family: SF Pro Text, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+        color: #1d1d1f;
+    }
+}
+//@include flex(flex , start, flex-start, row);

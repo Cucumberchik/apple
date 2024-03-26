@@ -1,31 +1,29 @@
 "use client"
-import { upDateData } from '@/app/GlobalRedux/Slices/generalAppleSlice';
-import { db } from '@/app/firebase';
-import { useAppDispatch, useAppSelector } from '@/app/hooks/ReduxHook';
-import { collection, getDocs } from 'firebase/firestore';
+import {   productConfigureRef, useAppDispatch, useAppSelector } from '@/app/hooks/ReduxHook';
 import React, { useEffect } from 'react'
 import ProductCard from './ProductCard';
-import { TypeProduct } from '../support/page';
+import {  getDocs } from 'firebase/firestore';
+import {  upDateData } from '@/app/GlobalRedux/Slices/generalAppleSlice';
+
 
 export default function GLobalStore() {
-    let dispatch = useAppDispatch()
-    let productConfigureRef = collection(db, "Product");
-    let {data} = useAppSelector(state=>state.generalAppleSlice)
+  let dispatch = useAppDispatch()
+  let {data} = useAppSelector(state=>state.generalAppleSlice)
+  async function UpDateData(){
+    const docs = await getDocs(productConfigureRef);
+    let Data = docs.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id}
+    });
+    dispatch(upDateData(Data))
+  }
+  useEffect(()=>{UpDateData()},[])
     
-    const UpDateData = async()=>{
-        const docs = await getDocs(productConfigureRef);
-        let Data = docs.docs.map((doc: any) => {
-            return { ...doc.data(), id: doc.id}
-        });
-        dispatch(upDateData(Data))
-    }
-    useEffect(()=>{UpDateData()},[])
   return (
     <section id='Store'>
       <div className="store_content">
-        {!!data? (
+        {data.length > 0 ? (
           data.map((el, idx)=>(
-          <ProductCard data={el} idx={idx} />
+          <ProductCard datas={el} key={idx} />
           ))
         ): (
           <></>

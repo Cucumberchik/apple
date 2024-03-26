@@ -5,21 +5,15 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks/ReduxHook';
 
 import React, { useState } from 'react'
 export interface TypeProduct  {
-    title?: string,
-    price?:  string ,
-    URLimage?: string,
-    description?: string,
-    cotegory?: string,
-    id?:string
+    title: string,
+    price:  string ,
+    URLimage: string,
+    description: string,
+    cotegory: string,
+    id:string
 }
 export default function Admin() {
-  const [inputVlue, setInputValue] = useState<TypeProduct>({
-    title: '',
-    price: '',
-    URLimage: '',
-    description: '',
-    cotegory: ''
-  });
+  const [inputVlue, setInputValue] = useState<TypeProduct>({title: '',price: '',URLimage: "",description: '',cotegory: '', id: ""});
   let {data,} = useAppSelector(state=>state.generalAppleSlice)
 
   let dispatch = useAppDispatch()
@@ -50,7 +44,8 @@ export default function Admin() {
         price: '',
         URLimage: '',
         description: '',
-        cotegory: ''
+        cotegory: '',
+        id:''
       })
       }else{
         alert("Please fill all fields")

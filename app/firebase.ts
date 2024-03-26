@@ -4,8 +4,16 @@ import type { Firestore } from "@firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth } from 'firebase/auth';
 
+type TypeFirebase = {
+  apiKey: string,
+  authDomain:string,
+  projectId: string,
+  storageBucket: string,
+  messagingSenderId: string,
+  appId: string
+}
 
-const firebaseConfig = {
+const firebaseConfig: TypeFirebase = {
   apiKey: "AIzaSyAoMe9ju9NQ8mq-hhm7zN-2KoZQABBnYyE",
   authDomain: "apple-7ee76.firebaseapp.com",
   projectId: "apple-7ee76",
@@ -16,7 +24,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const db: Firestore = getFirestore(app);
+export const db = getFirestore(app);
 export const storage = getStorage();
 export const auth = getAuth(app);
 export default app;

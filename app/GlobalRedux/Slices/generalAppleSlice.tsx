@@ -7,13 +7,15 @@ import { TypeProduct } from "@/app/(components)/(pages)/support/page";
 let productConfigureRef = collection(db, "Product");
 
 interface IinitialState {
-    data?:TypeProduct[],
-    error: boolean
+    data:TypeProduct[],
+    error: boolean,
+    oneProduct:TypeProduct
 }
 
 const initialState: IinitialState = {
     data: [],
-    error: false
+    error: false,
+    oneProduct: {title: '',price: '',URLimage: '',description: '',cotegory: '',id:''}
 };
 
 const AppleSlice = createSlice({
@@ -27,11 +29,13 @@ const AppleSlice = createSlice({
             try{
                 addDoc(productConfigureRef, action.payload);
             }catch(e){
-                console.log(e);
             }
         },
+        getOne(state, action){
+            state.oneProduct = action.payload;
+        }
     }
 });
 
-export const { upDateData, addProduct } = AppleSlice.actions;
+export const { upDateData, addProduct, getOne } = AppleSlice.actions;
 export default AppleSlice.reducer;

@@ -19,7 +19,6 @@ export interface TypeStatus  {
 export default function Header() {
   const [status, setStatus] = useState<TypeStatus>({status: "null",message: null,});
   let dispatch = useAppDispatch()
-  // useEffect(()=>{UpDateData(dispatch(upDateData()))},[])
   return (
     <section id='navbar' className={`navbar ${status.status}`}>
       <div className={`container ${status.status}`} onMouseLeave={() => setStatus({status: "false", message: status.message})}>
