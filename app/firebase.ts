@@ -14,12 +14,12 @@ type TypeFirebase = {
 }
 
 const firebaseConfig: TypeFirebase = {
-  apiKey: "AIzaSyAoMe9ju9NQ8mq-hhm7zN-2KoZQABBnYyE",
-  authDomain: "apple-7ee76.firebaseapp.com",
-  projectId: "apple-7ee76",
-  storageBucket: "apple-7ee76.appspot.com",
-  messagingSenderId: "107253775490",
-  appId: "1:107253775490:web:becc519b4e9418280e089b"
+  apiKey: "YOURTOKEN",
+  authDomain: "YOURTOKEN",
+  projectId: "YOURTOKEN",
+  storageBucket: "YOURTOKEN",
+  messagingSenderId: "YOURTOKEN",
+  appId: "YOURTOKEN"
 };
 
 const app = initializeApp(firebaseConfig);
